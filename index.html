@@ -117,9 +117,6 @@
                     <tr>\
                         <td colspan="2">' + (feature.properties['NOP_Field2'] !== null ? autolinker.link(feature.properties['NOP_Field2'].toLocaleString()) : '') + '</td>\
                     </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['linkTanya'] !== null ? autolinker.link(feature.properties['linkTanya'].toLocaleString()) : '') + '</td>\
-                    </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
@@ -200,7 +197,7 @@
                 lineJoin: 'bevel',
                 weight: 1.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case '020400':
@@ -213,7 +210,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case '1.Reposisi':
@@ -226,7 +223,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case '2.Reposisi Berubah Luas':
@@ -239,7 +236,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case '3.K4':
@@ -252,7 +249,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case '4.Overlap':
@@ -265,7 +262,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'tn_nama':
@@ -278,7 +275,7 @@
                 lineJoin: 'bevel',
                 weight: 1.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 default:
@@ -291,7 +288,7 @@
                 lineJoin: 'bevel',
                 weight: 1.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
             }
@@ -301,7 +298,7 @@
         map.getPane('pane_24102024_2').style['mix-blend-mode'] = 'normal';
         var layer_24102024_2 = new L.geoJson(json_24102024_2, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_24102024_2',
             layerName: 'layer_24102024_2',
             pane: 'pane_24102024_2',
@@ -310,6 +307,20 @@
         });
         bounds_group.addLayer(layer_24102024_2);
         map.addLayer(layer_24102024_2);
+        var overlaysTree = [
+            {label: '24102024<br /><table><tr><td style="text-align: center;"><img src="legend/24102024_2_0201000.png" /></td><td>020100</td></tr><tr><td style="text-align: center;"><img src="legend/24102024_2_0204001.png" /></td><td>020400</td></tr><tr><td style="text-align: center;"><img src="legend/24102024_2_1Reposisi2.png" /></td><td>1.Reposisi</td></tr><tr><td style="text-align: center;"><img src="legend/24102024_2_2ReposisiBerubahLuas3.png" /></td><td>2.Reposisi Berubah Luas</td></tr><tr><td style="text-align: center;"><img src="legend/24102024_2_3K44.png" /></td><td>3.K4</td></tr><tr><td style="text-align: center;"><img src="legend/24102024_2_4Overlap5.png" /></td><td>4.Overlap</td></tr><tr><td style="text-align: center;"><img src="legend/24102024_2_tnnama6.png" /></td><td>tn_nama</td></tr><tr><td style="text-align: center;"><img src="legend/24102024_2_7.png" /></td><td></td></tr></table>', layer: layer_24102024_2},
+            {label: '<img src="legend/bidang_pbbcopy_1.png" /> bidang_pbb copy', layer: layer_bidang_pbbcopy_1},
+            {label: "Google Satellite", layer: layer_GoogleSatellite_0, radioGroup: 'bm' },]
+        var lay = L.control.layers.tree(null, overlaysTree,{
+            //namedToggle: true,
+            //selectorBack: false,
+            //closedSymbol: '&#8862; &#x1f5c0;',
+            //openedSymbol: '&#8863; &#x1f5c1;',
+            //collapseAll: 'Collapse all',
+            //expandAll: 'Expand all',
+            collapsed: true,
+        });
+        lay.addTo(map);
         map.on("zoomend", function(){
 
                 if (map.hasLayer(layer_bidang_pbbcopy_1)) {
