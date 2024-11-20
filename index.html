@@ -20,11 +20,23 @@
             padding: 0;
             margin: 0;
         }
+	.judul {            
+            position: absolute;
+            z-index: 1000;
+            text-align: center;
+            width: 100%;
+            background-color: transparent;
+            color: white;
+            text-shadow: 0px 0px 12px black;
+            font-size: x-large;
+            padding-top: 10px;
+	}
         </style>
         <title>Peta Tanah Banjarsari</title>
     </head>
     <body>
         <div id="map">
+		<div class="judul">Peta Tanah Banjarsari Kec. Gajah</div>
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
